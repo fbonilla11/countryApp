@@ -2,7 +2,7 @@
 <input
   type="text"
   class="form-control"
-  placeholder="{{ placeholder }}"
+  [placeholder]="placeholder"
   (keyup.enter)="this.addNewTerm(txtInput.value)"
   #txtInput
 />
