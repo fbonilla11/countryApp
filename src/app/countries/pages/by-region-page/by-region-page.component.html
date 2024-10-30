@@ -5,9 +5,9 @@
   <div class="col text-center">
     <button
       *ngFor="let region of regions"
-      class="btn"
-      (click)="this.searchByRegion(txtSearch.value)"
-      #txtSearch
+      class="btn mx-2"
+      (click)="this.searchByRegion(region)"
+      [ngClass]="{'btn-outline-primary' : this.selectedRegion == region}"
     >
       {{ region }}
     </button>
