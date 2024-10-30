@@ -1,7 +1,7 @@
 import { Country } from '../interfaces/country';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, of } from 'rxjs';
+import { catchError, delay, map, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -16,12 +16,16 @@ export class CountriesServiceService {
 
     return this.HttpClient.get<Country[]>(url).pipe(
       map((countries) => (countries.length > 0 ? countries[0] : null)),
-      catchError(() => of(null))
+      catchError(() => of(null)),
+      delay(2000)
     );
   }
 
   private getHttpRequest(url: string): Observable<Country[]> {
-    return this.HttpClient.get<Country[]>(url).pipe(catchError(() => of([])));
+    return this.HttpClient.get<Country[]>(url).pipe(
+      catchError(() => of([])),
+      delay(2000)
+    );
   }
 
   // This method sends an http request to the API and returns an array of Country
