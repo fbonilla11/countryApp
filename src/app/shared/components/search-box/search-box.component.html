@@ -1,0 +1,8 @@
+<!-- Añadimos el selector #txtInput como una referencia para el propio input, para después utilziarlo en (keyup.enter) para enviar la búsqueda al componente ts -->
+<input
+  type="text"
+  class="form-control"
+  placeholder="{{ placeholder }}"
+  (keyup.enter)="this.addNewTerm(txtInput.value)"
+  #txtInput
+/>

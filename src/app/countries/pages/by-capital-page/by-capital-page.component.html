@@ -1,0 +1,21 @@
+<h2>Por Capital</h2>
+<hr />
+
+<div class="row">
+  <div class="col">
+    <!-- searchBox -->
+    <!-- Para recibir el valor enviado desde search-box component: (nombreVariable que emite el valor)="metodo_parent_component_get_value($event)" -->
+    <shared-search-box
+      placeholder="Buscar por capital"
+      (newTerm)="searchByCapital($event)"
+    ></shared-search-box>
+  </div>
+</div>
+<div class="row">
+  <div class="col">
+    <hr />
+    <shared-loading-spinner></shared-loading-spinner>
+    <!-- tabla de resultados -->
+    <countries-country-table [countries]="countries"></countries-country-table>
+  </div>
+</div>
