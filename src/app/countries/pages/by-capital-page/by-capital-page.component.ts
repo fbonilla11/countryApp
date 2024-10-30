@@ -11,11 +11,15 @@ export class ByCapitalPageComponent {
   // Declare new empty Country array to save the result from the http request
   public countries: Country[] = [];
 
+  public isLoaded: boolean = false;
+
   constructor(private CountriesService: CountriesServiceService) {}
 
   searchByCapital(term: string): void {
+    this.isLoaded = true;
     this.CountriesService.searchCapital(term).subscribe((countries) => {
       this.countries = countries;
+      this.isLoaded = false;
     });
   }
 }
