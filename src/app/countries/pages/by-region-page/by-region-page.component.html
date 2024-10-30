@@ -2,18 +2,20 @@
 <hr />
 
 <div class="row">
-  <div class="col">
-    <!-- searchBox -->
-     <!-- Para recibir el valor enviado desde search-box component: (nombreVariable que emite el valor)="metodo_parent_component_get_value($event)" -->
-    <shared-search-box
-      placeholder="Buscar por región"
-      (newTerm)="searchByRegion($event)"
-    ></shared-search-box>
+  <div class="col text-center">
+    <button
+      *ngFor="let region of regions"
+      class="btn mx-2"
+      (click)="this.searchByRegion(region)"
+      [ngClass]="{'btn-outline-primary' : this.selectedRegion == region}"
+    >
+      {{ region }}
+    </button>
   </div>
 </div>
 <div class="row">
   <div class="col">
-    <hr>
+    <hr />
     <shared-loading-spinner *ngIf="this.isLoaded"></shared-loading-spinner>
     <!-- tabla de resultados -->
     <countries-country-table [countries]="countries"></countries-country-table>
