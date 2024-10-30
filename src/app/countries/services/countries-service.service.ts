@@ -27,7 +27,16 @@ export class CountriesServiceService {
   };
 
   constructor(private HttpClient: HttpClient) {
-    console.log(this.cacheStore);
+    this.loadFromLocalStorage();
+  }
+
+  private saveToLocalStorage(): void {
+    localStorage.setItem('cacheStore', JSON.stringify(this.cacheStore));
+  }
+  private loadFromLocalStorage(): void {
+    if (!localStorage.getItem('cacheStore')) return;
+
+    this.cacheStore = JSON.parse(localStorage.getItem('cacheStore')!);
   }
 
   searchCountryByAlphaCode(code: string): Observable<Country | null> {
@@ -60,7 +69,8 @@ export class CountriesServiceService {
             searchTerm: capital,
             countries,
           })
-      )
+      ),
+      tap(() => this.saveToLocalStorage())
     );
   }
 
@@ -74,7 +84,8 @@ export class CountriesServiceService {
             searchTerm: country,
             countries,
           })
-      )
+      ),
+      tap(() => this.saveToLocalStorage())
     );
   }
 
@@ -88,7 +99,8 @@ export class CountriesServiceService {
             region: region,
             countries,
           })
-      )
+      ),
+      tap(() => this.saveToLocalStorage())
     );
   }
 }
