@@ -6,7 +6,7 @@
     <!-- searchBox -->
     <!-- Para recibir el valor enviado desde search-box component: (nombreVariable que emite el valor)="metodo_parent_component_get_value($event)" -->
     <shared-search-box
-      placeholder="Buscar por capital"
+      [placeholder]="placeholder"
       (newTerm)="searchByCapital($event)"
     ></shared-search-box>
   </div>
