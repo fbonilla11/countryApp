@@ -24,7 +24,7 @@ export class CountriesServiceService {
   private getHttpRequest(url: string): Observable<Country[]> {
     return this.HttpClient.get<Country[]>(url).pipe(
       catchError(() => of([])),
-      delay(2000)
+      delay(1500)
     );
   }
 
